@@ -10,6 +10,7 @@ if [ $(which jq | grep -c 'not found') -gt 0 ] ; then
    exit 1
 fi
 
+echo ""
 echo "Running image $image as container name $container..."
 docker run -d --name=$container $image
 
@@ -18,8 +19,12 @@ url="http://$ip:$port"
 
 echo ""
 echo "Testing container $container with an HTTP request to $url - output follows:"
+echo ""
 curl $url
+echo ""
 echo "===== LOG OUTPUT ====="
 docker logs $container
-
+echo ""
+echo "Deleting container $container"
 docker rm -f $container
+echo ""

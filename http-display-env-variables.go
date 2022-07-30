@@ -12,7 +12,6 @@ import (
 
 func env(w http.ResponseWriter, req *http.Request) {
 
-	fmt.Println()
 	for _, e := range os.Environ() {
 		pair := strings.SplitN(e, "=", 2)
 		fmt.Fprintln(w,pair[0],"=",pair[1])
